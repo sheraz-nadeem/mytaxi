@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="fake_driver_profile_images">
+        <item>@drawable/one</item>
+        <item>@drawable/two</item>
+        <item>@drawable/three</item>
+        <item>@drawable/four</item>
+        <item>@drawable/fiv</item>
+        <item>@drawable/six</item>
+        <item>@drawable/seven</item>
+        <item>@drawable/eight</item>
+        <item>@drawable/nine</item>
+        <item>@drawable/ten</item>
+
+        <item>@drawable/eleven</item>
+        <item>@drawable/twelve</item>
+        <item>@drawable/thirteen</item>
+        <item>@drawable/fourteen</item>
+        <item>@drawable/fifteen</item>
+        <item>@drawable/sixteen</item>
+        <item>@drawable/seventeen</item>
+        <item>@drawable/eighteen</item>
+        <item>@drawable/nineteen</item>
+        <item>@drawable/twenty</item>
+
+        <item>@drawable/twentyone</item>
+        <item>@drawable/twentytwo</item>
+        <item>@drawable/twentythree</item>
+        <item>@drawable/twentyfour</item>
+        <item>@drawable/twentyfive</item>
+        <item>@drawable/twentysix</item>
+        <item>@drawable/twentyseven</item>
+        <item>@drawable/twentyeight</item>
+        <item>@drawable/twentynine</item>
+        <item>@drawable/thirty</item>
+
+        <item>@drawable/one</item>
+        <item>@drawable/two</item>
+        <item>@drawable/three</item>
+        <item>@drawable/four</item>
+        <item>@drawable/fiv</item>
+        <item>@drawable/six</item>
+        <item>@drawable/seven</item>
+        <item>@drawable/eight</item>
+        <item>@drawable/nine</item>
+        <item>@drawable/ten</item>
+    </array>
+
+    <string-array name="fake_car_names">
+
+        <item>Honda Accord</item>
+        <item>Honda Amaze</item>
+        <item>Honda Avancier</item>
+        <item>Honda Ballade</item>
+        <item>Honda Brio</item>
+        <item>Honda BR-V</item>
+        <item>Honda City</item>
+        <item>Honda Civic</item>
+        <item>Honda Civic Tourer</item>
+        <item>Honda Clarity</item>
+
+        <item>Toyota Fortuner</item>
+        <item>Toyota Innova Crysta</item>
+        <item>Toyota Yaris</item>
+        <item>Toyota Platinum</item>
+        <item>Toyota Etios</item>
+        <item>Toyota Corolla</item>
+        <item>Toyota Rush</item>
+        <item>Toyota C-HR</item>
+        <item>Toyota Camry</item>
+        <item>Toyota Prius</item>
+
+        <item>Merc-Benz AMG GT</item>
+        <item>Merc-Benz C-Class</item>
+        <item>Merc-Benz CLA</item>
+        <item>Merc-Benz CLS</item>
+        <item>Merc-Benz E-Class</item>
+        <item>Merc-Benz G-Class</item>
+        <item>Merc-Benz GLA</item>
+        <item>Merc-Benz GLC</item>
+        <item>Merc-Benz Maybach</item>
+        <item>Merc-Benz S-Class</item>
+
+        <item>Ford Fiesta ST</item>
+        <item>Ford Focus</item>
+        <item>Ford Fusion Hybrid</item>
+        <item>Ford CMAX Hybrid</item>
+        <item>Ford Taurus</item>
+        <item>Ford EcoSport</item>
+        <item>Ford Escape</item>
+        <item>Ford Edge</item>
+        <item>Ford Explorer</item>
+        <item>Ford Badoer</item>
+    </string-array>
+
+    <string-array name="fake_driver_names">
+
+        <item>Carlo Abate</item>
+        <item>George Abecassis</item>
+        <item>Kenny Acheson</item>
+        <item>Andrea de Adamich</item>
+        <item>Philippe Adams</item>
+        <item>Walt Ader</item>
+        <item>Kurt Adolff</item>
+        <item>Fred Agabashian</item>
+        <item>Kurt Ahrens, Jr.</item>
+        <item>Christijan Albers</item>
+
+        <item>Michele Alboreto</item>
+        <item>Jean Alesi</item>
+        <item>Jaime Alguersuari</item>
+        <item>Philippe Alliot</item>
+        <item>Cliff Allison</item>
+        <item>Fernando Alonso</item>
+        <item>Giovanna Amati</item>
+        <item>George Amick</item>
+        <item>Red Amick</item>
+        <item>Chris Amon</item>
+
+        <item>Bob Anderson</item>
+        <item>Conny Andersson</item>
+        <item>Mario Andretti</item>
+        <item>Michael Andretti</item>
+        <item>Keith Andrews</item>
+        <item>Elio de Angelis</item>
+        <item>Marco Apicella</item>
+        <item>Mário de Araújo Cabral</item>
+        <item>Frank Armi</item>
+        <item>Chuck Arnold</item>
+
+        <item>René Arnoux</item>
+        <item>Peter Arundell</item>
+        <item>Alberto Ascari</item>
+        <item>Peter Ashdown</item>
+        <item>Ian Ashley</item>
+        <item>Gerry Ashmore</item>
+        <item>Bill Aston</item>
+        <item>Richard Attwood</item>
+        <item>Manny Ayulo</item>
+        <item>Luca Badoer</item>
+    </string-array>
+</resources>
