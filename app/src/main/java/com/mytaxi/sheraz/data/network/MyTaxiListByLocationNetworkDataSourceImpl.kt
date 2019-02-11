@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mytaxi.sheraz.data.network.response.TaxiListResponse
-import com.mytaxi.sheraz.data.repository.MyTaxiListByLocationRepositoryImpl
 import com.mytaxi.sheraz.internal.NoConnectivityException
 
 class MyTaxiListByLocationNetworkDataSourceImpl(
@@ -21,7 +20,10 @@ class MyTaxiListByLocationNetworkDataSourceImpl(
 
     override suspend fun fetchMyTaxiListByLocation(pOneLat: String, pOneLng: String, pTwoLat: String, pTwoLng: String) {
 
-        Log.d(TAG, "fetchMyTaxiListByLocation(): pOneLat: $pOneLat, pOneLng: $pOneLng, pTwoLat: $pTwoLat, pTwoLng: $pTwoLng")
+        Log.d(
+            TAG,
+            "fetchMyTaxiListByLocation(): pOneLat: $pOneLat, pOneLng: $pOneLng, pTwoLat: $pTwoLat, pTwoLng: $pTwoLng"
+        )
 
         try {
 
@@ -29,8 +31,14 @@ class MyTaxiListByLocationNetworkDataSourceImpl(
                 .getMyTaxiListByLocation(pOneLat, pOneLng, pTwoLat, pTwoLng)
                 .await()
 
-            Log.v(TAG, "fetchMyTaxiListByLocation(): fetchedMyTaxiListByLocation: ${fetchedMyTaxiListByLocation.poiList.size}")
-            Log.v(TAG, "fetchMyTaxiListByLocation(): fetchedMyTaxiListByLocation: ${fetchedMyTaxiListByLocation.poiList}")
+            Log.v(
+                TAG,
+                "fetchMyTaxiListByLocation(): fetchedMyTaxiListByLocation: ${fetchedMyTaxiListByLocation.poiList.size}"
+            )
+            Log.v(
+                TAG,
+                "fetchMyTaxiListByLocation(): fetchedMyTaxiListByLocation: ${fetchedMyTaxiListByLocation.poiList}"
+            )
             // MutableLiveData.postValue must be called from background thread,
             // that is why this function is a "suspend" function which will
             // be called from a coroutine.

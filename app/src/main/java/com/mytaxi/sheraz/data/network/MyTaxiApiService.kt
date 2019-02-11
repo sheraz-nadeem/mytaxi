@@ -21,35 +21,35 @@ interface MyTaxiApiService {
     ): Deferred<TaxiListResponse>
 
 
-    companion object {
-        operator fun invoke(
-            connectivityInterceptor: ConnectivityInterceptor
-        ): MyTaxiApiService {
-
-            // Just to show off that Authorization header can be added
-            // using an Interceptor
-//            val requestInterceptor = Interceptor { chain ->
+//    companion object {
+//        operator fun invoke(
+//            connectivityInterceptor: ConnectivityInterceptor
+//        ): MyTaxiApiService {
 //
-//                val original = chain.request()
-//                val newRequest = original.newBuilder()
-//                    .addHeader("Authorization", "AUTH_TOKEN")
-//                    .build()
+//            // Just to show off that Authorization header can be added
+//            // using an Interceptor
+////            val requestInterceptor = Interceptor { chain ->
+////
+////                val original = chain.request()
+////                val newRequest = original.newBuilder()
+////                    .addHeader("Authorization", "AUTH_TOKEN")
+////                    .build()
+////
+////                return@Interceptor chain.proceed(newRequest)
+////            }
 //
-//                return@Interceptor chain.proceed(newRequest)
-//            }
-
-            val okHttpClient = OkHttpClient.Builder()
-//                .addInterceptor(requestInterceptor)
-                .addInterceptor(connectivityInterceptor)
-                .build()
-
-            return Retrofit.Builder()
-                .client(okHttpClient)
-                .baseUrl("https://fake-poi-api.mytaxi.com/")
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(MyTaxiApiService::class.java)
-        }
-    }
+//            val okHttpClient = OkHttpClient.Builder()
+////                .addInterceptor(requestInterceptor)
+//                .addInterceptor(connectivityInterceptor)
+//                .build()
+//
+//            return Retrofit.Builder()
+//                .client(okHttpClient)
+//                .baseUrl("https://fake-poi-api.mytaxi.com/")
+//                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build()
+//                .create(MyTaxiApiService::class.java)
+//        }
+//    }
 }

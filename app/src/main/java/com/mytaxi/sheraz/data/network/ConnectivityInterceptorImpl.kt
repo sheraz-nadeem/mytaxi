@@ -15,6 +15,12 @@ class ConnectivityInterceptorImpl(
     override fun intercept(chain: Interceptor.Chain) : Response  {
         if (!isOnline())
             throw NoConnectivityException()
+
+//        val original = chain.request()
+//        val newRequest = original.newBuilder()
+//            .addHeader("Authorization", "AUTH_TOKEN")
+//            .build()
+
         return chain.proceed(chain.request())
     }
 

@@ -6,14 +6,12 @@ import androidx.lifecycle.ViewModel
 import com.mytaxi.sheraz.data.db.dao.MyTaxiDao
 import com.mytaxi.sheraz.data.db.entity.MyTaxiEntry
 import com.mytaxi.sheraz.data.repository.MyTaxiListByLocationRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.async
+import javax.inject.Inject
 
-class HomeViewModel(
+class HomeViewModel @Inject constructor(
     private val myTaxiDao: MyTaxiDao,
     private val myTaxiListByLocationRepository: MyTaxiListByLocationRepository
-    ) : ViewModel() {
+) : ViewModel() {
 
     fun getMyTaxis(pOneLat: String, pOneLng: String, pTwoLat: String, pTwoLng: String) {
 
