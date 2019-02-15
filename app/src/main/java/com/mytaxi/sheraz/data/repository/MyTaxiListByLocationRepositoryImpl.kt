@@ -4,8 +4,10 @@ import android.util.Log
 import com.mytaxi.sheraz.data.db.dao.MyTaxiDao
 import com.mytaxi.sheraz.data.network.MyTaxiListByLocationNetworkDataSource
 import com.mytaxi.sheraz.data.network.response.TaxiListResponse
-import kotlinx.coroutines.*
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class MyTaxiListByLocationRepositoryImpl(
     private val myTaxiDao: MyTaxiDao,
