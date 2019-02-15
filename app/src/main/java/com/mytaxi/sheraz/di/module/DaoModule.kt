@@ -1,15 +1,15 @@
 package com.mytaxi.sheraz.di.module
 
 import com.mytaxi.sheraz.data.db.MyTaxiDatabase
+import com.mytaxi.sheraz.data.db.dao.MyTaxiDao
 import dagger.Module
 import dagger.Provides
 
-@Module(includes = [
-RepositoryModule::class
-])
+
+@Module
 class DaoModule {
 
     @Provides
-    fun provideMyTaxiDao(database: MyTaxiDatabase) = database.myTaxiDao()
+    fun provideMyTaxiDao(database: MyTaxiDatabase): MyTaxiDao = database.myTaxiDao()
 
 }
