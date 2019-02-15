@@ -6,14 +6,20 @@ import androidx.lifecycle.ViewModel
 import com.mytaxi.sheraz.data.db.dao.MyTaxiDao
 import com.mytaxi.sheraz.data.db.entity.MyTaxiEntry
 import com.mytaxi.sheraz.data.repository.MyTaxiListByLocationRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.async
+import com.mytaxi.sheraz.data.repository.MyTaxiListByLocationRepositoryImpl
+import javax.inject.Inject
 
-class HomeViewModel(
+class HomeViewModel @Inject constructor(
     private val myTaxiDao: MyTaxiDao,
     private val myTaxiListByLocationRepository: MyTaxiListByLocationRepository
-    ) : ViewModel() {
+) : ViewModel() {
+
+
+    init {
+        Log.d(TAG, "init(): ")
+    }
+
+
 
     fun getMyTaxis(pOneLat: String, pOneLng: String, pTwoLat: String, pTwoLng: String) {
 
@@ -29,6 +35,10 @@ class HomeViewModel(
         return myTaxiDao.getMyTaxiListAvailable()
     }
 
+    override fun onCleared() {
+        Log.d(TAG, "onCleared(): ")
+        super.onCleared()
+    }
 
     /**
      * Companion object, common to all instances of this class

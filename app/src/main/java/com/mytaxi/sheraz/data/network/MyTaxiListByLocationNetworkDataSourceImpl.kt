@@ -11,6 +11,12 @@ class MyTaxiListByLocationNetworkDataSourceImpl(
     private val myTaxiApiService: MyTaxiApiService
 ) : MyTaxiListByLocationNetworkDataSource {
 
+
+    init {
+        Log.d(TAG, "init(): ")
+    }
+
+
     /**
      * Encapsulating Mutable value so that it can be only changed within the "fetchMyTaxiListByLocation()" method
      */
