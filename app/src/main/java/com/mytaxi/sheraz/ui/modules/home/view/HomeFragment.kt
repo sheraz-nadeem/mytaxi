@@ -20,6 +20,7 @@ import com.mytaxi.sheraz.internal.NoConnectivityException
 import com.mytaxi.sheraz.ui.modules.base.ScopedFragment
 import com.mytaxi.sheraz.ui.modules.home.adapters.HomeGridAdapter
 import com.mytaxi.sheraz.ui.modules.home.fakemodel.FakeTaxiModel
+import com.mytaxi.sheraz.ui.modules.home.viewmodel.HomeViewModel
 import com.mytaxi.sheraz.utils.RuntimePermissionsHandler
 import com.mytaxi.sheraz.utils.RuntimePermissionsHandler.REQUEST_LOCATION
 import com.mytaxi.sheraz.utils.SnackBarUtil
@@ -28,22 +29,23 @@ import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import org.kodein.di.KodeinAware
 import java.lang.Exception
-import kotlin.coroutines.CoroutineContext
 
 const val pOneLat: String = "53.694865"
 const val pOneLng: String = "9.757589"
 const val pTwoLat: String = "53.394655"
 const val pTwoLng: String = "10.099891"
 
-class HomeFragment : ScopedFragment(), KodeinAware, SwipeRefreshLayout.OnRefreshListener {
+class HomeFragment : ScopedFragment(), SwipeRefreshLayout.OnRefreshListener {
+
+
+    private val mViewModel: HomeViewModel by bindViewModel()
 
     // Binding
-    private var mBinding: HomeFragmentBinding? = null
-
+    private lateinit var mBinding: HomeFragmentBinding
     private var mSelectedModel: FakeTaxiModel.Taxi? = null
     private var mIsInitialLoadingDone = false
+
 
     /**
      * Fragment Lifecycle methods
@@ -230,10 +232,10 @@ class HomeFragment : ScopedFragment(), KodeinAware, SwipeRefreshLayout.OnRefresh
         val homeGridAdapter = HomeGridAdapter(context!!, View.OnClickListener {
             Log.d(TAG, "HomeGridAdapter.OnClick(): ")
 
-            mSelectedModel = if (it == null) {
-                null
+            if (it == null) {
+                mSelectedModel = null
             } else {
-                it.tag as FakeTaxiModel.Taxi
+                mSelectedModel = it.tag as FakeTaxiModel.Taxi
             }
 
             toggleFabIfNecessary()
