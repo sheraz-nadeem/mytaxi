@@ -3,6 +3,10 @@ package com.mytaxi.sheraz.internal
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 
 /**
  * AppCompatActivity Extension functions
@@ -18,3 +22,9 @@ fun AppCompatActivity.requestPermission(permission: String, requestId: Int) =
 
 fun AppCompatActivity.batchRequestPermissions(permissions: Array<String>, requestId: Int) =
     ActivityCompat.requestPermissions(this, permissions, requestId)
+
+
+/**
+ * Fragment Extension functions
+ */
+inline fun <reified V : ViewModel> Fragment.bindViewModel(viewModelFactory: ViewModelProvider.Factory) = lazy { ViewModelProviders.of(this, viewModelFactory).get(V::class.java) }

@@ -142,5 +142,4 @@ abstract class ScopedFragment : Fragment(), CoroutineScope {
         val TAG: String = ScopedFragment::class.java.simpleName
     }
 
-    protected inline fun <reified V : ViewModel> bindViewModel() = lazy { ViewModelProviders.of(this, mViewModelFactory).get(V::class.java) }
 }
