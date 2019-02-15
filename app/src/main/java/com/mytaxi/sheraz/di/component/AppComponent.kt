@@ -1,9 +1,7 @@
 package com.mytaxi.sheraz.di.component
 
 import android.content.Context
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mytaxi.sheraz.ViewModelProviderFactory
 import com.mytaxi.sheraz.data.db.MyTaxiDatabase
 import com.mytaxi.sheraz.data.db.dao.MyTaxiDao
 import com.mytaxi.sheraz.data.network.MyTaxiApiService

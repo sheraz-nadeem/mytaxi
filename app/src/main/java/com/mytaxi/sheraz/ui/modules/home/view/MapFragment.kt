@@ -1,8 +1,6 @@
 package com.mytaxi.sheraz.ui.modules.home.view
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -15,7 +13,6 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.mytaxi.sheraz.databinding.FragmentMapBinding
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
@@ -25,31 +22,25 @@ import com.mytaxi.sheraz.internal.NoConnectivityException
 import com.mytaxi.sheraz.ui.modules.base.ScopedFragment
 import com.mytaxi.sheraz.ui.modules.home.fakemodel.FakeTaxiModel
 import com.mytaxi.sheraz.ui.modules.home.viewmodel.HomeViewModel
-import com.mytaxi.sheraz.ui.modules.home.viewmodel.HomeViewModelFactory
 import com.mytaxi.sheraz.utils.GoogleMapCustomInfoWindow
 import com.mytaxi.sheraz.utils.SnackBarUtil
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.closestKodein
-import org.kodein.di.generic.instance
 import java.lang.Exception
 
 
-class MapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
+class MapFragment : ScopedFragment(), OnMapReadyCallback {
 
     private val mCustomGoogleMapInfoWindow by lazy { return@lazy GoogleMapCustomInfoWindow(context!!) }
     private val mMapStyle by lazy { return@lazy MapStyleOptions.loadRawResourceStyle(context, R.raw.map_style_retro) }
     private val mCustomMapPinBitmap by lazy { return@lazy AppCompatResources.getDrawable(context!!, R.drawable.ic_driver)!!.toBitmap() }
 
-
-    private lateinit var mMap: GoogleMap
-    private lateinit var mSelectedTaxiItem: FakeTaxiModel.Taxi
-
+    private val mViewModel: HomeViewModel by bindViewModel()
 
     // Binding
-    private var mBinding: FragmentMapBinding? = null
+    private lateinit var mBinding: FragmentMapBinding
+    private lateinit var mMap: GoogleMap
+    private lateinit var mSelectedTaxiItem: FakeTaxiModel.Taxi
 
 
     /**
@@ -83,7 +74,7 @@ class MapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
         // Use Generated binding class FragmentMapBinding.inflate() method, not DataBindingUtil.inflate() method,
         // as we already know which layout is going to be inflated
         mBinding = FragmentMapBinding.inflate(inflater, container, false)
-        return mBinding?.root
+        return mBinding.root
 
     }
 
