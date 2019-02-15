@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mytaxi.sheraz.data.network.response.TaxiListResponse
-import com.mytaxi.sheraz.data.repository.MyTaxiListByLocationRepositoryImpl
 import com.mytaxi.sheraz.internal.NoConnectivityException
 
 class MyTaxiListByLocationNetworkDataSourceImpl(

@@ -1,13 +1,11 @@
 package com.mytaxi.sheraz.data.repository
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import com.mytaxi.sheraz.data.db.dao.MyTaxiDao
-import com.mytaxi.sheraz.data.db.entity.MyTaxiEntry
 import com.mytaxi.sheraz.data.network.MyTaxiListByLocationNetworkDataSource
 import com.mytaxi.sheraz.data.network.response.TaxiListResponse
 import kotlinx.coroutines.*
-import org.threeten.bp.ZonedDateTime
+
 
 class MyTaxiListByLocationRepositoryImpl(
     private val myTaxiDao: MyTaxiDao,
