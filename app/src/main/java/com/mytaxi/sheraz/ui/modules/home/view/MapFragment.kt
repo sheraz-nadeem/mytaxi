@@ -19,6 +19,7 @@ import com.google.android.gms.maps.model.*
 import com.mytaxi.sheraz.R
 import com.mytaxi.sheraz.data.db.entity.MyTaxiEntry
 import com.mytaxi.sheraz.internal.NoConnectivityException
+import com.mytaxi.sheraz.internal.bindViewModel
 import com.mytaxi.sheraz.ui.modules.base.ScopedFragment
 import com.mytaxi.sheraz.ui.modules.home.fakemodel.FakeTaxiModel
 import com.mytaxi.sheraz.ui.modules.home.viewmodel.HomeViewModel
@@ -35,7 +36,7 @@ class MapFragment : ScopedFragment(), OnMapReadyCallback {
     private val mMapStyle by lazy { return@lazy MapStyleOptions.loadRawResourceStyle(context, R.raw.map_style_retro) }
     private val mCustomMapPinBitmap by lazy { return@lazy AppCompatResources.getDrawable(context!!, R.drawable.ic_driver)!!.toBitmap() }
 
-    private val mViewModel: HomeViewModel by bindViewModel()
+    private val mViewModel: HomeViewModel by bindViewModel(mViewModelFactory)
 
     // Binding
     private lateinit var mBinding: FragmentMapBinding

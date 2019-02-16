@@ -17,6 +17,7 @@ import com.mytaxi.sheraz.data.db.entity.MyTaxiEntry
 
 import com.mytaxi.sheraz.databinding.HomeFragmentBinding
 import com.mytaxi.sheraz.internal.NoConnectivityException
+import com.mytaxi.sheraz.internal.bindViewModel
 import com.mytaxi.sheraz.ui.modules.base.ScopedFragment
 import com.mytaxi.sheraz.ui.modules.home.adapters.HomeGridAdapter
 import com.mytaxi.sheraz.ui.modules.home.fakemodel.FakeTaxiModel
@@ -39,7 +40,7 @@ const val pTwoLng: String = "10.099891"
 class HomeFragment : ScopedFragment(), SwipeRefreshLayout.OnRefreshListener {
 
 
-    private val mViewModel: HomeViewModel by bindViewModel()
+    private val mViewModel: HomeViewModel by bindViewModel(mViewModelFactory)
 
     // Binding
     private lateinit var mBinding: HomeFragmentBinding
