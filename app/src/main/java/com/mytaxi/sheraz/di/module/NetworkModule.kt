@@ -1,6 +1,7 @@
 package com.mytaxi.sheraz.di.module
 
 import android.content.Context
+import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.mytaxi.sheraz.data.network.*
 import com.squareup.picasso.OkHttp3Downloader
@@ -32,14 +33,27 @@ class NetworkModule {
     }
 
     @Provides
+    fun provideCallAdapterFactory(): CoroutineCallAdapterFactory = CoroutineCallAdapterFactory()
+
+    @Provides
+    fun provideGson(): Gson = Gson()
+
+    @Provides
+    fun provideGsonConverterFactory(gson: Gson): GsonConverterFactory = GsonConverterFactory.create(gson)
+
+    @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient) : Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient,
+                        coroutineCallAdapterFactory: CoroutineCallAdapterFactory,
+                        gsonConverterFactory: GsonConverterFactory) : Retrofit {
+
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl("https://fake-poi-api.mytaxi.com/")
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(coroutineCallAdapterFactory)
+            .addConverterFactory(gsonConverterFactory)
             .build()
+
     }
 
     @Provides
