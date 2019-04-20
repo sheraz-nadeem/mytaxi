@@ -1,18 +1,20 @@
 package com.mytaxi.sheraz.data.repository
 
 import android.util.Log
+import com.mytaxi.sheraz.data.CoroutinesDispatcherProvider
 import com.mytaxi.sheraz.data.db.dao.MyTaxiDao
 import com.mytaxi.sheraz.data.network.MyTaxiListByLocationNetworkDataSource
 import com.mytaxi.sheraz.data.network.response.TaxiListResponse
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class MyTaxiListByLocationRepositoryImpl(
     private val myTaxiDao: MyTaxiDao,
-    private val myTaxiListByLocationNetworkDataSource: MyTaxiListByLocationNetworkDataSource
+    private val myTaxiListByLocationNetworkDataSource: MyTaxiListByLocationNetworkDataSource,
+    private val dispatcherProvider: CoroutinesDispatcherProvider
 ) : MyTaxiListByLocationRepository {
+
+    private val parentJob = Job()
+    private val scope = CoroutineScope(dispatcherProvider.mainDispatcher + parentJob)
 
     init {
         Log.d(TAG, "init(): ")
@@ -28,9 +30,7 @@ class MyTaxiListByLocationRepositoryImpl(
 
         Log.d(TAG, "persistFetchedMyTaxiList(): taxiListResponse: $taxiListResponse")
 
-        // Since Repository doesn't have a lifecycle we are only stuck
-        // with GlobalScope.launch
-        GlobalScope.launch(Dispatchers.IO) {
+        scope.launch(dispatcherProvider.ioDispatcher) {
             myTaxiDao.insertList(taxiListResponse.poiList)
         }
 
@@ -43,9 +43,7 @@ class MyTaxiListByLocationRepositoryImpl(
             "getMyTaxiListByLocation(): pOneLat: $pOneLat, pOneLng: $pOneLng, pTwoLat: $pTwoLat, pTwoLng: $pTwoLng"
         )
 
-        // Since Repository doesn't have a lifecycle we are only stuck
-        // with GlobalScope.launch
-        GlobalScope.launch(Dispatchers.IO) {
+        scope.launch(dispatcherProvider.ioDispatcher) {
 
             val numOfRows = myTaxiDao.getNumOfRows()
             Log.i(TAG, "getMyTaxiListByLocation(): numOfRows: $numOfRows")
@@ -84,6 +82,12 @@ class MyTaxiListByLocationRepositoryImpl(
 
     }
 
+    fun cancelAllRequests() {
+
+        Log.d(TAG, "cancelAllRequests(): ")
+        parentJob.cancelChildren()
+
+    }
 
     /**
      * Companion object, common to all instances of this class

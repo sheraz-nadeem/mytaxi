@@ -20,6 +20,7 @@ import javax.inject.Singleton
     modules = [
         ContextModule::class,
         NetworkModule::class,
+        CoroutinesDispatcherProviderModule::class,
         DatabaseModule::class,
         DaoModule::class,
         RepositoryModule::class,

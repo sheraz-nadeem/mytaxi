@@ -1,5 +1,6 @@
 package com.mytaxi.sheraz.di.module
 
+import com.mytaxi.sheraz.data.CoroutinesDispatcherProvider
 import com.mytaxi.sheraz.data.db.dao.MyTaxiDao
 import com.mytaxi.sheraz.data.network.MyTaxiListByLocationNetworkDataSource
 import com.mytaxi.sheraz.data.repository.MyTaxiListByLocationRepository
@@ -13,7 +14,9 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideMyTaxiListByLocationRepository(dao: MyTaxiDao, networkDataSource: MyTaxiListByLocationNetworkDataSource) : MyTaxiListByLocationRepository {
-        return MyTaxiListByLocationRepositoryImpl(dao, networkDataSource)
-    }
+    fun provideMyTaxiListByLocationRepository(
+        dao: MyTaxiDao,
+        networkDataSource: MyTaxiListByLocationNetworkDataSource,
+        dispatcherProvider: CoroutinesDispatcherProvider
+    ): MyTaxiListByLocationRepository = MyTaxiListByLocationRepositoryImpl(dao, networkDataSource, dispatcherProvider)
 }
